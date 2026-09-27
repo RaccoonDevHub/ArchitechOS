@@ -35,3 +35,5 @@ build/
 .vscode/
 .idea/
 
+# Tailwind
+static/css/output.css
