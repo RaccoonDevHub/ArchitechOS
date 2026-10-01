@@ -1,23 +1,49 @@
+
 {% extends "base.html" %}
+
+{% load static %}
 
 {% block title %}Accueil — ArchitechOS{% endblock %}
 
 {% block content %}
-<div class="hero min-h-screen">
-    <div class="hero-content text-center">
-        <div class="max-w-xl">
-            <h1 class="text-5xl font-bold">
-                ArchitechOS
-            </h1>
 
-            <p class="py-6 text-lg">
-                Documentation technique centralisée.
-            </p>
+<header class="p-6">
+    <a href="/" aria-label="Retour à l'accueil">
+        <span class="text-2xl font-bold">ArchitechOS</span>
+    </a>
+</header>
 
-            <button class="btn btn-primary text-white">
-                architech os test
-            </button>
-        </div>
+<main class="flex min-h-[80vh] items-center justify-center px-6">
+    <div class="grid w-full max-w-6xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
+        <a href="/hardware/" class="card min-h-64 bg-[#234D3C] shadow-xl">
+            <div class="card-body items-center text-center">
+                <img src="{% static 'img/hardware.png' %}"
+                 alt="hardware"
+                 class="h-20 w-20 object-contain brightness-0 invert">
+                <h2 class="mt-4 text-3xl font-bold">Hardware</h2>
+            </div>
+        </a>
+
+        <a href="/chronos/" class="card min-h-64 bg-[#234D3C] shadow-xl">
+            <div class="card-body items-center text-center">
+                <img src="{% static 'img/chronos.png' %}"
+                 alt="chronos"
+                 class="h-20 w-20 object-contain brightness-0 invert">
+                <h2 class="mt-4 text-3xl font-bold">Chronos</h2>
+            </div>
+        </a>
+
+        <a href="/electronics/" class="card min-h-64 bg-[#234D3C] shadow-xl">
+            <div class="card-body items-center text-center">
+                <img src="{% static 'img/electronics.png' %}"
+                 alt="electronics"
+                 class="h-20 w-20 object-contain brightness-0 invert">
+                <h2 class="mt-4 text-3xl font-bold">Electronics</h2>
+            </div>
+        </a>
+
     </div>
-</div>
+</main>
+
 {% endblock %}
