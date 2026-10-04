@@ -22,6 +22,6 @@ urlpatterns = [
 
     path("", include("core.urls")),
     path("chronos/", include("chronos.urls")),
-    path("hardawre/", include("hardware.urls")),
+    path("hardware/", include("hardware.urls")),
     path("electronics/", include("electronics.urls")),
 ]
