@@ -1,13 +1,21 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Hardware — ArchitechOS{% endblock %}
 
 {% block content %}
 
-<main class="flex min-h-screen items-center justify-center">
-    <h1 class="text-4xl font-bold">
-        Hardware
-    </h1>
+<main class="trieur">
+    <header class="trieur-header">
+        <a href="/" class="trieur-brand">
+            <span class="brand-mark">A</span>
+            <span>ArchitechOS</span>
+        </a>
+    </header>
+{% include "hardware/partials/trieur.html" %}
+
 </main>
 
+<link rel="stylesheet" href="{% static 'css/hardware.css' %}">
+<script src="{% static 'js/htmx.min.js' %}" defer></script>
 {% endblock %}
