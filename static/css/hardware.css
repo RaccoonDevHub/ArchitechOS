@@ -1,0 +1,172 @@
+
+.trieur {
+    --folder-dark: #234D3C;
+    --folder-light: #F1F3EA;
+    --page-green: #C8D8C2;
+    --text-dark: #24352D;
+
+    min-height: 100vh;
+    padding: clamp(16px, 3vw, 36px);
+    color: var(--text-dark);
+}
+
+.trieur-header {
+    margin-bottom: 32px;
+}
+
+.trieur-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-dark);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.brand-mark {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--folder-dark);
+    color: var(--folder-light);
+}
+
+.trieur-tabs {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    position: relative;
+    isolation: isolate;
+}
+
+.trieur-tab {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 0 1 190px;
+    min-width: 0;
+    padding: 16px 18px;
+    border: 0;
+    border-radius: 12px 12px 0 0;
+    background: var(--folder-dark);
+    color: var(--folder-light);
+    font: inherit;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition:
+        background-color 180ms ease,
+        color 180ms ease;
+}
+
+/* Languette caractéristique du dossier */
+.trieur-tab::before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    left: 12px;
+    width: 42%;
+    height: 8px;
+    border-radius: 7px 7px 0 0;
+    background: inherit;
+}
+
+.trieur-tab.is-active {
+    z-index: 2;
+    background: var(--folder-light);
+    color: var(--folder-dark);
+}
+
+.trieur-tab:focus-visible {
+    outline: 3px solid var(--text-dark);
+    outline-offset: 3px;
+}
+
+.folder-icon {
+    position: relative;
+    display: inline-block;
+    flex: 0 0 25px;
+    width: 25px;
+    height: 17px;
+    border: 2px solid currentColor;
+    border-radius: 3px 4px 3px 3px;
+}
+
+.folder-icon::before {
+    content: "";
+    position: absolute;
+    left: -2px;
+    top: -7px;
+    width: 11px;
+    height: 6px;
+    border: 2px solid currentColor;
+    border-bottom: 0;
+    border-radius: 3px 3px 0 0;
+}
+
+.folder-icon-open {
+    width: 29px;
+    height: 20px;
+}
+
+.trieur-panel {
+    position: relative;
+    z-index: 1;
+    min-height: 420px;
+    padding: clamp(20px, 3vw, 36px);
+    border-radius: 0 12px 12px 12px;
+    background: var(--folder-light);
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--page-green);
+}
+
+.panel-header h1 {
+    margin: 0;
+    color: var(--folder-dark);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+}
+
+.panel-header p {
+    margin: 4px 0 0;
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+.panel-content {
+    min-height: 280px;
+    padding-top: 24px;
+}
+
+@media (max-width: 520px) {
+    .trieur-tabs {
+        gap: 3px;
+    }
+
+    .trieur-tab {
+        flex: 1 1 0;
+        justify-content: center;
+        padding: 14px 6px;
+        font-size: 0.8rem;
+    }
+
+    .trieur-tab .folder-icon {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .trieur-tab {
+        transition: none;
+    }
+}

@@ -1,0 +1,107 @@
+{% load static %}
+
+<section class="trieur-interface" id="trieur-interface" aria-label="Modules">
+    <nav class="trieur-tabs" aria-label="Dossiers">
+        {% for slug, label in modules.items %}
+            <button
+                class="trieur-tab{% if slug == active_module %} is-active{% endif %}"
+                type="button"
+                data-module="{{ slug }}"
+                aria-selected="{% if slug == active_module %}true{% else %}false{% endif %}"
+                {% if slug != active_module %}
+                    hx-get="{% url 'hardware:select_module' module=slug %}"
+                    hx-target="#trieur-interface"
+                    hx-swap="outerHTML"
+                {% endif %}
+            >
+                <span class="folder-icon" aria-hidden="true"></span>
+                <span>{{ label }}</span>
+            </button>
+        {% endfor %}
+    </nav>
+<section class="trieur-panel" id="trieur-panel" aria-live="polite">
+    <header class="panel-header">
+        <span class="folder-icon folder-icon-open" aria-hidden="true"></span>
+        <div>
+            <h1 id="panel-title">{{ active_module|capfirst }}</h1>
+            <p>Votre espace de travail</p>
+        </div>
+    </header>
+
+    <div class="panel-content" id="panel-content">
+        {% if active_module == "fiches" %}
+            <div class="grid w-full max-w-6xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4" style="color: #F1F3EA;">
+
+                <a href="/hardware/" class="card min-h-64 bg-[#234D3C] shadow-xl">
+                    <div class="card-body items-center text-center">
+                        <img src="{% static 'img/processeur.png' %}"
+                        alt=""
+                        class="h-20 w-20 object-contain brightness-0 invert">
+                        <h2 class="mt-4 text-3xl font-bold">Processeurs</h2>
+                    </div>
+                </a>
+
+                <a href="/chronos/" class="card min-h-64 bg-[#234D3C] shadow-xl">
+                    <div class="card-body items-center text-center">
+                        <img src="{% static 'img/gpu.png' %}"
+                        alt=""
+                        class="h-20 w-20 object-contain brightness-0 invert">
+                        <h2 class="mt-4 text-3xl font-bold">Cartes graphiques</h2>
+                    </div>
+                </a>
+
+                <a href="/electronics/" class="card min-h-64 bg-[#234D3C] shadow-xl">
+                    <div class="card-body items-center text-center">
+                        <img src="{% static 'img/hardware.png' %}"
+                        alt=""
+                        class="h-20 w-20 object-contain brightness-0 invert">
+                        <h2 class="mt-4 text-3xl font-bold">Cartes mères</h2>
+                    </div>
+                </a>
+
+                <a href="/hardware/" class="card min-h-64 bg-[#234D3C] shadow-xl">
+                    <div class="card-body items-center text-center">
+                        <img src="{% static 'img/ram.png' %}"
+                        alt=""
+                        class="h-20 w-20 object-contain brightness-0 invert">
+                        <h2 class="mt-4 text-3xl font-bold">Mémoire vive</h2>
+                    </div>
+                </a>
+
+                <a href="/chronos/" class="card min-h-64 bg-[#234D3C] shadow-xl">
+                    <div class="card-body items-center text-center">
+                        <img src="{% static 'img/ssd.png' %}"
+                        alt=""
+                        class="h-20 w-20 object-contain brightness-0 invert">
+                        <h2 class="mt-4 text-3xl font-bold">Stockage</h2>
+                    </div>
+                </a>
+
+                <a href="/electronics/" class="card min-h-64 bg-[#234D3C] shadow-xl">
+                    <div class="card-body items-center text-center">
+                        <img src="{% static 'img/psu.png' %}"
+                        alt=""
+                        class="h-20 w-20 object-contain brightness-0 invert">
+                        <h2 class="mt-4 text-3xl font-bold">Alimentations</h2>
+                    </div>
+                </a>
+
+                <div class="card min-h-64 bg-[#234D3C] shadow-xl">
+                    <div class="card-body items-center text-center">
+                        <img src="{% static 'img/case.png' %}"
+                        alt=""
+                        class="h-20 w-20 object-contain brightness-0 invert">
+                        <h2 class="mt-4 text-3xl font-bold">Boîtiers</h2>
+                    </div>
+                </div>
+
+            </div>
+        {% elif active_module == "builder" %}
+            <!-- Les sous-modules Chronos arriveront ici -->
+        {% elif active_module == "following" %}
+            <!-- Les sous-modules Electronics arriveront ici -->
+        {% endif %}
+    </div>
+</section>
+
+</section>
